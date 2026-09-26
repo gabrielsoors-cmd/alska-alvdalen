@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Älska Älvdalen — en kärleksfest i Älvdalen</title>
+  <meta name="description" content="Älska Älvdalen är ett årligt återkommande evenemang byggt på tradition, stolthet och gemenskap. Läs mer om vad vi är och hur du är med.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/alska-alvdalen-purpur.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="wordmark" href="index.html">
+        <img src="assets/img/logo/alska-alvdalen-purpur.svg" alt="Älska Älvdalen">
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        Meny
+      </button>
+      <nav class="nav" id="primary-nav" data-open="false">
+        <a href="index.html" aria-current="page">Hem</a>
+        <a href="om.html">Om Älska Älvdalen</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--minimal">
+      <div class="hero__photo">
+        <video
+          class="hero__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/img/red-style-aa.jpg"
+        >
+          <source src="assets/img/alska-alvdalen-video-landingpage.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="wrap hero__inner hero__inner--minimal">
+        <div>
+          <img class="hero__logo hero__logo--big" src="assets/img/logo/alska-alvdalen-vit.svg" alt="Älska Älvdalen">
+          <div class="hero__buttons">
+            <a class="btn btn--vit" href="om.html">Läs om oss</a>
+            <a class="btn btn--vit" href="kontakt.html">Kontakta oss</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <svg class="river-divider" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 40 C 200 0, 300 80, 500 40 S 800 0, 1000 40 S 1150 70, 1200 40" stroke="#951637" opacity="0.25"/>
+    </svg>
+
+    <section class="section section--ljus">
+      <div class="wrap">
+        <div class="lede-block">
+          <h2>Det här är Älska Älvdalen</h2>
+          <p class="u-measure-wide">
+            Älska Älvdalen är en återkommande kärleksfest för hela dalen — en vecka då vi firar
+            varandra, vår bygd och allt det som gör Älvdalen till en plats man aldrig riktigt
+            lämnar bakom sig. Oavsett om du bor här, kommer hit på besök, eller flyttat långt
+            bort men bär dalen i hjärtat: du är en del av gemenskapen.
+          </p>
+        </div>
+
+        <div class="values">
+          <div class="value">
+            <h3>Tradition</h3>
+            <p>I vårt älskade Älvdalen värnar vi om våra rötter. Vi talar samma unika språk
+              som våra förfäder, bär folkdräkt med stolthet och odlar i vår välbevarade natur.</p>
+          </div>
+          <div class="value">
+            <h3>Stolthet</h3>
+            <p>En stolthet över våra djupa skogar, våra porfyrrika berg och rika fiskevatten
+              — och över det kreativa folk som lever och verkar här.</p>
+          </div>
+          <div class="value">
+            <h3>Gemenskap</h3>
+            <p>Älvdalen är en plats där man umgås — att tillsammans skratta, njuta och skapa
+              minnen. Här är alla välkomna och alla kan känna sig trygga.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--purpur">
+      <div class="wrap split">
+        <div class="split__media">
+          <img src="assets/img/hero-handfasting.jpg" alt="Ett par håller varandra i handen i solnedgång.">
+        </div>
+        <div>
+          <h2>Fira med oss</h2>
+          <p style="max-width: 46ch; color: rgba(255,255,255,0.9);">
+            Varje år samlas dalen för att fira det som gör oss till oss. Håll utkik här och på
+            Facebook för program, aktiviteter och platser att träffas på under årets Älska Älvdalen.
+          </p>
+          <a class="btn btn--solgul" href="kontakt.html">Hör av dig</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="wordmark" href="index.html">
+            <img src="assets/img/logo/alska-alvdalen-vit.svg" alt="Älska Älvdalen">
+          </a>
+          <p style="max-width: 32ch; margin-top: 0.75rem; color: rgba(255,255,255,0.75);">
+            En kärleksfest byggd på tradition, stolthet och gemenskap.
+          </p>
+        </div>
+        <nav class="footer-nav" aria-label="Sidfot">
+          <a href="index.html">Hem</a>
+          <a href="om.html">Om Älska Älvdalen</a>
+          <a href="kontakt.html">Kontakt</a>
+          <a href="https://facebook.com/alskaalvdalen">Facebook</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Älska Älvdalen</span>
+        <span>alskaalvdalen.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

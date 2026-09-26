@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt — Älska Älvdalen</title>
+  <meta name="description" content="Kontakta Älska Älvdalen — mejl och Facebook.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/alska-alvdalen-purpur.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="wordmark" href="index.html">
+        <img src="assets/img/logo/alska-alvdalen-purpur.svg" alt="Älska Älvdalen">
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Meny</button>
+      <nav class="nav" id="primary-nav" data-open="false">
+        <a href="index.html">Hem</a>
+        <a href="om.html">Om Älska Älvdalen</a>
+        <a href="kontakt.html" aria-current="page">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--tight section--ljus">
+      <div class="wrap">
+        <p class="hero__eyebrow" style="color: var(--purpur);">Hör av dig</p>
+        <h1 style="font-size: var(--step-3); color: var(--purpur-dark);">Kontakt</h1>
+        <p class="u-measure-wide" style="font-size: var(--step-1); color: var(--morkgra);">
+          Frågor om Älska Älvdalen, förslag på aktiviteter eller vill du samarbeta med oss?
+          Vi svarar så snart vi kan.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--ljus" style="padding-top:0;">
+      <div class="wrap contact-grid">
+        <div>
+          <dl class="contact-list">
+            <div>
+              <dt>E-POST</dt>
+              <dd><a href="mailto:hannah@risander.se">hannah@risander.se</a></dd>
+            </div>
+            <div>
+              <dt>FACEBOOK</dt>
+              <dd><a href="https://facebook.com/alskaalvdalen">facebook.com/alskaalvdalen</a></dd>
+            </div>
+            <div>
+              <dt>ADRESS</dt>
+              <dd>Dalgatan 100<br>796 30 Älvdalen</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div>
+          <!--
+            Statisk sajt utan backend — formuläret bygger istället ihop en
+            mailto:-länk av det som skrivs i fälten och öppnar den i e-postklienten
+            när man klickar "Skicka meddelande". Se assets/js/main.js.
+          -->
+          <form id="contact-form">
+            <div class="form-field">
+              <label for="name">Namn</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-field">
+              <label for="email">E-post</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-field">
+              <label for="message">Meddelande</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button class="btn btn--purpur" type="submit">Skicka meddelande</button>
+            <p class="form-note">Öppnar din e-postklient med meddelandet ifyllt, adresserat till hannah@risander.se.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="wordmark" href="index.html">
+            <img src="assets/img/logo/alska-alvdalen-vit.svg" alt="Älska Älvdalen">
+          </a>
+          <p style="max-width: 32ch; margin-top: 0.75rem; color: rgba(255,255,255,0.75);">
+            En kärleksfest byggd på tradition, stolthet och gemenskap.
+          </p>
+        </div>
+        <nav class="footer-nav" aria-label="Sidfot">
+          <a href="index.html">Hem</a>
+          <a href="om.html">Om Älska Älvdalen</a>
+          <a href="kontakt.html">Kontakt</a>
+          <a href="https://facebook.com/alskaalvdalen">Facebook</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Älska Älvdalen</span>
+        <span>alskaalvdalen.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
