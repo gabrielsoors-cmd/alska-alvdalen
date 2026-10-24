@@ -41,6 +41,7 @@
   /* Färger — exakt ur grafisk manual 3.1 */
   --purpur: #951637;
   --purpur-dark: #6c0f28;
+  --purpur-deep: #240710;
   --skogsgron: #42642E;
   --solgul: #FAB948;
   --morkgra: #575756;
@@ -58,9 +59,20 @@
   --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
   --step-2: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
   --step-3: clamp(2.5rem, 2rem + 2.2vw, 4rem);
+  --step-4: clamp(2.75rem, 2.1rem + 3.4vw, 5rem);
 
   --content-width: 68rem;
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
+
+  /* Formspråk: radier, skuggor, rörelse — det här är vad som gör ytorna
+     konsekventa i stället för att varje knapp/kort uppfinner sitt eget. */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgba(36, 7, 16, 0.08);
+  --shadow-md: 0 10px 24px -8px rgba(36, 7, 16, 0.22);
+  --shadow-lg: 0 24px 48px -16px rgba(36, 7, 16, 0.28);
+  --ease: cubic-bezier(0.22, 0.8, 0.28, 1);
 }
 
 /* -- Reset ----------------------------------------------------------------- */
@@ -83,9 +95,12 @@ h1, h2, h3, h4 {
   line-height: 1.15;
   margin: 0 0 0.5em;
   color: var(--purpur-dark);
+  text-wrap: balance;
 }
 p { max-width: 62ch; margin: 0 0 1.1em; }
+p:last-child { margin-bottom: 0; }
 .u-measure-wide p { max-width: 74ch; }
+::selection { background: var(--solgul); color: var(--purpur-deep); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -95,6 +110,7 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
 :focus-visible {
   outline: 3px solid var(--solgul);
   outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* -- Layout helpers ---------------------------------------------------------- */
@@ -107,52 +123,89 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
 .section--tight { padding-block: clamp(2.5rem, 5vw, 4rem); }
 .section--purpur { background: var(--purpur); color: var(--vit); }
 .section--purpur h2, .section--purpur h3 { color: var(--vit); }
+.section--tint { background: var(--ljusgra); }
 .section--ljus { background: var(--vit); }
 
 .river-divider {
   display: block;
   width: 100%;
-  height: clamp(40px, 8vw, 90px);
+  height: clamp(32px, 6vw, 72px);
 }
-.river-divider path { fill: none; stroke-width: 2.5; }
+.river-divider path { fill: none; stroke-width: 2; }
+
+/* -- Eyebrow / kicker --------------------------------------------------------
+   Återanvänds i stället för att varje sida hårdkodar egna inline-stilar. */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purpur);
+  margin: 0 0 1rem;
+}
+.section--purpur .eyebrow,
+.section--photobg .eyebrow { color: var(--solgul); }
+
+.section-head {
+  max-width: 40rem;
+  margin-bottom: clamp(2rem, 5vw, 3.25rem);
+}
+.section-head--center { margin-inline: auto; text-align: center; }
+.section-head h2 { margin-bottom: 0; }
 
 /* -- Header / navigation ------------------------------------------------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(247, 247, 249, 0.92);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(87, 87, 86, 0.12);
+  background: rgba(247, 247, 249, 0.86);
+  backdrop-filter: blur(10px) saturate(1.4);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  border-bottom: 1px solid rgba(87, 87, 86, 0.1);
 }
 .site-header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 0.7rem;
+  padding-block: 0.65rem;
 }
 .wordmark { display: inline-flex; }
-.wordmark img { height: clamp(38px, 6vw, 52px); width: auto; }
+.wordmark img { height: clamp(36px, 5.5vw, 48px); width: auto; }
 
 .nav {
   display: flex;
-  gap: clamp(1rem, 3vw, 2.25rem);
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
 }
 .nav a {
+  position: relative;
   font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   text-decoration: none;
   color: var(--text);
-  padding-block: 0.25rem;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  padding-block: 0.4rem;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 2px;
+  background: var(--purpur);
+  transition: right 0.25s var(--ease);
 }
 .nav a:hover,
-.nav a[aria-current="page"] {
-  color: var(--purpur);
-  border-color: var(--purpur);
-}
+.nav a:focus-visible,
+.nav a[aria-current="page"] { color: var(--purpur); }
+.nav a:hover::after,
+.nav a:focus-visible::after,
+.nav a[aria-current="page"]::after { right: 0; }
 
 .nav-toggle {
   display: none;
@@ -164,7 +217,7 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   height: 42px;
   background: none;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 0;
   cursor: pointer;
   transition: background-color 0.15s ease;
@@ -172,11 +225,11 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
 .nav-toggle:hover { background: rgba(149, 22, 55, 0.07); }
 .nav-toggle__bar {
   display: block;
-  width: 22px;
+  width: 20px;
   height: 2px;
   background: var(--purpur-dark);
   border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.2s ease;
+  transition: transform 0.25s var(--ease), opacity 0.2s ease;
 }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
@@ -193,21 +246,23 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
     inset-inline: 0;
     top: 100%;
     flex-direction: column;
-    gap: 0.15rem;
+    align-items: stretch;
+    gap: 0;
     background: var(--vit);
     padding: 0.5rem var(--gutter) 1.5rem;
     border-bottom: 1px solid rgba(87,87,86,0.12);
-    box-shadow: 0 16px 28px rgba(44, 42, 41, 0.14);
+    box-shadow: var(--shadow-md);
     display: none;
   }
   .nav[data-open="true"] {
     display: flex;
-    animation: nav-drop 0.18s ease;
+    animation: nav-drop 0.2s var(--ease);
   }
   .nav a {
-    padding-block: 0.65rem;
+    padding-block: 0.8rem;
     border-bottom: 1px solid rgba(87,87,86,0.08);
   }
+  .nav a::after { display: none; }
   .nav a:last-child { border-bottom: none; }
 }
 
@@ -216,11 +271,11 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* -- Hero ------------------------------------------------------------------ */
+/* -- Hero: video + stor logga + knappar -------------------------------------- */
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(155deg, var(--purpur) 0%, var(--purpur-dark) 55%, #430b1c 100%);
+  background: linear-gradient(155deg, var(--purpur) 0%, var(--purpur-dark) 55%, var(--purpur-deep) 100%);
   color: var(--vit);
 }
 .hero__photo {
@@ -228,41 +283,17 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   inset: 0;
   z-index: 0;
 }
-.hero__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  opacity: 0.55;
-}
 .hero__photo::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(155deg, rgba(149,22,55,0.88) 0%, rgba(108,15,40,0.92) 55%, rgba(67,11,28,0.96) 100%);
+  background: linear-gradient(155deg, rgba(149,22,55,0.45) 0%, rgba(108,15,40,0.52) 55%, rgba(50,8,21,0.62) 100%);
 }
-.hero__inner {
-  position: relative;
-  z-index: 1;
-  padding-block: clamp(4rem, 12vw, 8rem) clamp(3rem, 8vw, 5rem);
-  display: grid;
-  gap: 2.5rem;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  align-items: end;
-}
-@media (max-width: 780px) {
-  .hero__inner { grid-template-columns: 1fr; }
-}
-
-/* -- Hero, minimal landningsvariant: video + stor logga + knappar --------- */
 .hero--minimal {
   min-height: min(92vh, 780px);
   display: flex;
   align-items: stretch;
   justify-content: center;
-}
-.hero--minimal .hero__photo::after {
-  background: linear-gradient(155deg, rgba(149,22,55,0.45) 0%, rgba(108,15,40,0.52) 55%, rgba(50,8,21,0.62) 100%);
 }
 .hero__video {
   width: 100%;
@@ -277,104 +308,236 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   width: 100%;
   min-height: min(92vh, 780px);
   padding-block: clamp(3rem, 8vw, 5rem);
+  position: relative;
+  z-index: 1;
 }
 .hero__logo--big {
   max-width: min(440px, 72%);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.85rem;
   filter: drop-shadow(0 8px 22px rgba(0,0,0,0.4));
 }
 .hero__buttons {
   display: flex;
-  gap: 1rem;
+  gap: 0.85rem;
   flex-wrap: wrap;
 }
-.hero__eyebrow {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--solgul);
-  margin-bottom: 1.25rem;
+.hero__scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.25rem, 3vw, 2.25rem);
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,0.75);
+  animation: scroll-cue-bounce 2.2s ease-in-out infinite;
 }
-.hero__logo { max-width: min(480px, 90%); height: auto; margin-bottom: 1.25rem; }
-.hero p.lede {
-  font-family: var(--font-body);
-  font-size: var(--step-1);
-  max-width: 42ch;
-  color: rgba(255,255,255,0.92);
-}
-.hero__meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  align-items: flex-start;
-  border-left: 2px solid rgba(255,255,255,0.3);
-  padding-left: 1.5rem;
-}
-.hero__meta strong {
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  color: var(--solgul);
+.hero__scroll-cue svg { width: 18px; height: 18px; }
+@keyframes scroll-cue-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
 }
 
-/* -- Buttons ---------------------------------------------------------------- */
+/* -- Buttons ------------------------------------------------------------------
+   Ett litet system i stället för enstaka ad hoc-klasser: bas + varianter,
+   med riktiga hover/active-lägen (lyft + skugga) istället för att bara byta
+   bakgrundsfärg. */
 .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.95rem;
-  display: inline-block;
-  padding: 0.85rem 1.7rem;
-  border-radius: 3px;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  padding: 0.95rem 1.8rem;
+  border-radius: var(--radius-md);
   text-decoration: none;
-  border: 2px solid transparent;
-  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease),
+    background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
 }
-.btn--solgul { background: var(--solgul); color: var(--purpur-dark); }
-.btn--solgul:hover { background: #ffcb6e; }
-.btn--outline { border-color: currentColor; color: var(--vit); }
-.btn--outline:hover { background: rgba(255,255,255,0.12); }
-.btn--purpur { background: var(--purpur); color: var(--vit); }
-.btn--purpur:hover { background: var(--purpur-dark); }
-.btn--vit { background: var(--vit); color: var(--purpur-dark); }
-.btn--vit:hover { background: var(--solgul); color: var(--purpur-dark); }
-.btn--outline-vit {
-  background: transparent;
+.btn:active { transform: translateY(0) scale(0.98); }
+
+.btn--primary {
+  background: var(--purpur);
   color: var(--vit);
-  border-color: var(--vit);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-sm);
 }
-.btn--outline-vit:hover {
-  background: rgba(255,255,255,0.15);
-  color: var(--vit);
-  border-color: var(--vit);
+.btn--primary:hover {
+  background: var(--purpur-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/* -- Värdegrund / kort ------------------------------------------------------- */
-.values {
+.btn--accent {
+  background: var(--solgul);
+  color: var(--purpur-dark);
+  box-shadow: var(--shadow-sm);
+}
+.btn--accent:hover {
+  background: #ffc568;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -8px rgba(144, 93, 11, 0.35);
+}
+
+.btn--ghost-light {
+  background: rgba(255,255,255,0.06);
+  color: var(--vit);
+  border-color: rgba(255,255,255,0.55);
+  backdrop-filter: blur(3px);
+}
+.btn--ghost-light:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: var(--vit);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px rgba(0,0,0,0.45);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--purpur);
+  border-color: rgba(149, 22, 55, 0.35);
+}
+.btn--outline:hover {
+  border-color: var(--purpur);
+  background: rgba(149, 22, 55, 0.05);
+  transform: translateY(-2px);
+}
+
+/* -- Statement: stor varumärkesrad (grundande besked, citat) ----------------- */
+.statement {
+  max-width: 22ch;
+  font-family: var(--font-heading);
+  font-size: var(--step-4);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: var(--purpur-dark);
+  margin: 0;
+}
+.statement--center { margin-inline: auto; text-align: center; }
+
+/* -- Vision: redaktionellt tvåspalt ------------------------------------------ */
+.vision-grid {
   display: grid;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 3rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 3.5rem);
 }
 @media (max-width: 780px) {
-  .values { grid-template-columns: 1fr; }
+  .vision-grid { grid-template-columns: 1fr; }
 }
-.value h3 { font-size: var(--step-1); }
-.value p { color: var(--morkgra); }
-.section--purpur .value p { color: rgba(255,255,255,0.85); }
-.section--purpur .value h3 { color: var(--vit); }
+.vision-item {
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--solgul);
+}
+.vision-item__mark {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--purpur);
+  margin-bottom: 1rem;
+}
+.vision-item p {
+  font-family: var(--font-heading);
+  font-size: var(--step-1);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.3;
+  max-width: 34ch;
+}
 
-/* -- Helbild som sektionsbakgrund (Fira med oss, Vinter/sommarmagasin m.fl.) - */
-.section--fira,
+/* -- Vision-citat som används tillsammans med bild (om.html) ----------------- */
+.vision-quote {
+  border-left: 3px solid var(--solgul);
+  padding-left: 1.25rem;
+  margin: 0 0 1.75rem;
+}
+.vision-quote:last-child { margin-bottom: 0; }
+.vision-quote p { margin: 0; font-size: var(--step-1); line-height: 1.35; }
+.section--purpur .vision-quote { border-left-color: var(--vit); }
+
+/* -- Feature-kort (Idéråd / Magasin / Creativet på startsidan) --------------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+@media (max-width: 900px) {
+  .feature-grid { grid-template-columns: 1fr; }
+}
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 3vw, 2.1rem);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.3);
+}
+.feature-card__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgba(250, 185, 72, 0.16);
+  color: var(--solgul);
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.25rem;
+  flex: none;
+}
+.feature-card__icon svg { width: 1.3rem; height: 1.3rem; }
+.feature-card h3 {
+  color: var(--vit);
+  font-size: var(--step-1);
+  margin-bottom: 0.6rem;
+}
+.feature-card p {
+  color: rgba(255,255,255,0.82);
+  font-size: 0.98rem;
+  margin-bottom: 1.5rem;
+}
+.feature-card__link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--solgul);
+}
+.feature-card__link svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  transition: transform 0.2s var(--ease);
+}
+.feature-card:hover .feature-card__link svg { transform: translateX(3px); }
+
+/* -- Helbild som sektionsbakgrund (Vinter/sommarmagasin m.fl.) --------------- */
 .section--photobg {
   position: relative;
-  background-image: var(--fira-bg, var(--photo-bg));
+  background-image: var(--photo-bg);
   background-size: cover;
   background-position: center 35%;
   overflow: hidden;
   color: var(--vit);
 }
-.section--fira::before,
 .section--photobg::before {
   content: "";
   position: absolute;
@@ -384,83 +547,13 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
 .section--photobg.section--photobg--skog::before {
   background: linear-gradient(155deg, rgba(66,100,46,0.82) 0%, rgba(44,70,30,0.87) 55%, rgba(24,38,16,0.92) 100%);
 }
-.section--fira .wrap,
 .section--photobg .wrap {
   position: relative;
   z-index: 1;
   max-width: 46rem;
 }
-.section--fira h2,
 .section--photobg h2 { color: var(--vit); }
 .section--photobg p { color: rgba(255,255,255,0.9); }
-
-/* -- Badge / pill (t.ex. "Nyhet: nu är vi en ideell förening") --------------- */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: var(--purpur-dark);
-  background: rgba(149, 22, 55, 0.08);
-  border: 1px solid rgba(149, 22, 55, 0.25);
-  border-radius: 999px;
-  padding: 0.4rem 0.9rem;
-  margin-bottom: 1.1rem;
-}
-.badge::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--solgul);
-  flex: none;
-}
-.section--purpur .badge {
-  color: var(--vit);
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.35);
-}
-
-/* -- Vision-citat (Idéråd, vision m.fl.) ------------------------------------- */
-.vision-quote {
-  border-left: 3px solid var(--solgul);
-  padding-left: 1.25rem;
-  margin: 0 0 1.75rem;
-}
-.vision-quote:last-child { margin-bottom: 0; }
-.vision-quote p { margin: 0; }
-.section--purpur .vision-quote { border-left-color: var(--vit); }
-
-/* -- Idéråd: numrerad process ------------------------------------------------ */
-.process-list {
-  list-style: none;
-  margin: 1.75rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 1.1rem;
-}
-.process-list li {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-.process-list .process-num {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--purpur);
-  background: rgba(149,22,55,0.08);
-  border-radius: 50%;
-  width: 1.9rem;
-  height: 1.9rem;
-  display: grid;
-  place-items: center;
-  flex: none;
-}
-.process-list p { margin: 0; color: var(--morkgra); }
 
 /* -- Split (bild + text) ----------------------------------------------------- */
 .split {
@@ -476,9 +569,10 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
 }
 .split__media {
   aspect-ratio: 4 / 5;
-  border-radius: 6px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
+  box-shadow: var(--shadow-md);
 }
 .split__media img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -488,29 +582,8 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   background: var(--vit);
   display: flex;
   align-items: center;
-  box-shadow: 0 1px 3px rgba(44,42,41,0.1);
 }
 .split__media--contain img { width: 100%; height: auto; object-fit: contain; }
-.split__media--placeholder {
-  background: linear-gradient(150deg, var(--solgul), var(--purpur) 70%);
-  display: grid;
-  place-items: center;
-  color: rgba(255,255,255,0.85);
-  font-family: var(--font-heading);
-  text-align: center;
-  padding: 1.5rem;
-}
-.split__media--placeholder span {
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
-  background: rgba(0,0,0,0.28);
-  padding: 0.6rem 1rem;
-  border-radius: 4px;
-  max-width: 22ch;
-}
-
-/* -- Mellanrubrik ----------------------------------------------------- */
-.lede-block { max-width: 46rem; }
 
 /* -- Kontaktsida ------------------------------------------------------------- */
 .contact-grid {
@@ -526,33 +599,49 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   margin: 0 0 2rem;
   padding: 0;
   display: grid;
-  gap: 1.25rem;
+  gap: 1.4rem;
 }
 .contact-list dt {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
-  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--purpur);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.25rem;
 }
 .contact-list dd { margin: 0; font-size: 1.05rem; }
 .contact-list a { text-decoration: underline; text-decoration-color: var(--solgul); text-underline-offset: 3px; }
+.contact-list__note {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--morkgra);
+  margin-top: 0.3rem;
+}
 
 .form-field { margin-bottom: 1.25rem; display: grid; gap: 0.4rem; }
 .form-field label {
   font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 .form-field input,
 .form-field textarea {
   font-family: var(--font-body);
   font-size: 1rem;
-  padding: 0.7rem 0.85rem;
-  border: 1px solid rgba(87,87,86,0.35);
-  border-radius: 4px;
+  padding: 0.75rem 0.9rem;
+  border: 1.5px solid rgba(87,87,86,0.25);
+  border-radius: var(--radius-sm);
   background: var(--vit);
   resize: vertical;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--purpur);
+  box-shadow: 0 0 0 4px rgba(149, 22, 55, 0.1);
 }
 .form-note {
   font-size: 0.85rem;
@@ -564,25 +653,29 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
 .site-footer {
   background: var(--purpur-dark);
   color: rgba(255,255,255,0.85);
-  padding-block: 3rem 2rem;
+  padding-block: 3.5rem 2rem;
 }
 .site-footer .wordmark img { filter: brightness(0) invert(1); }
 .footer-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.5rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 .footer-nav {
   display: flex;
-  gap: 1.5rem;
+  gap: clamp(1rem, 3vw, 1.75rem);
   flex-wrap: wrap;
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
-.footer-nav a { text-decoration: none; }
+.footer-nav a { text-decoration: none; transition: color 0.15s ease; }
 .footer-nav a:hover { color: var(--solgul); }
 .footer-bottom {
   padding-top: 1.5rem;
@@ -591,7 +684,21 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.55);
+}
+
+/* -- Reveal-on-scroll (progressiv förhöjning, respekterar reduced motion) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
 }
 
 /* -- Skip link ---------------------------------------------------------------- */
@@ -602,9 +709,10 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   background: var(--purpur);
   color: var(--vit);
   padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--radius-sm) 0;
   z-index: 100;
 }
 .skip-link:focus {
-  left: 1rem;
-  top: 1rem;
+  left: 0;
+  top: 0;
 }
