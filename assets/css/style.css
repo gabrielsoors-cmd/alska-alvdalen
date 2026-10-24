@@ -364,27 +364,103 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
 .section--purpur .value p { color: rgba(255,255,255,0.85); }
 .section--purpur .value h3 { color: var(--vit); }
 
-/* -- Fira med oss: helbild som sektionsbakgrund ------------------------------ */
-.section--fira {
+/* -- Helbild som sektionsbakgrund (Fira med oss, Vinter/sommarmagasin m.fl.) - */
+.section--fira,
+.section--photobg {
   position: relative;
-  background-image: var(--fira-bg);
+  background-image: var(--fira-bg, var(--photo-bg));
   background-size: cover;
   background-position: center 35%;
   overflow: hidden;
   color: var(--vit);
 }
-.section--fira::before {
+.section--fira::before,
+.section--photobg::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(155deg, rgba(149,22,55,0.82) 0%, rgba(108,15,40,0.86) 55%, rgba(50,8,21,0.9) 100%);
 }
-.section--fira .wrap {
+.section--photobg.section--photobg--skog::before {
+  background: linear-gradient(155deg, rgba(66,100,46,0.82) 0%, rgba(44,70,30,0.87) 55%, rgba(24,38,16,0.92) 100%);
+}
+.section--fira .wrap,
+.section--photobg .wrap {
   position: relative;
   z-index: 1;
   max-width: 46rem;
 }
-.section--fira h2 { color: var(--vit); }
+.section--fira h2,
+.section--photobg h2 { color: var(--vit); }
+.section--photobg p { color: rgba(255,255,255,0.9); }
+
+/* -- Badge / pill (t.ex. "Nyhet: nu är vi en ideell förening") --------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--purpur-dark);
+  background: rgba(149, 22, 55, 0.08);
+  border: 1px solid rgba(149, 22, 55, 0.25);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 1.1rem;
+}
+.badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--solgul);
+  flex: none;
+}
+.section--purpur .badge {
+  color: var(--vit);
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* -- Vision-citat (Idéråd, vision m.fl.) ------------------------------------- */
+.vision-quote {
+  border-left: 3px solid var(--solgul);
+  padding-left: 1.25rem;
+  margin: 0 0 1.75rem;
+}
+.vision-quote:last-child { margin-bottom: 0; }
+.vision-quote p { margin: 0; }
+.section--purpur .vision-quote { border-left-color: var(--vit); }
+
+/* -- Idéråd: numrerad process ------------------------------------------------ */
+.process-list {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+.process-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.process-list .process-num {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--purpur);
+  background: rgba(149,22,55,0.08);
+  border-radius: 50%;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.process-list p { margin: 0; color: var(--morkgra); }
 
 /* -- Split (bild + text) ----------------------------------------------------- */
 .split {
@@ -405,6 +481,16 @@ p { max-width: 62ch; margin: 0 0 1.1em; }
   position: relative;
 }
 .split__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* -- Infografik/collage-bild (t.ex. Creativet) ------------------------------- */
+.split__media--contain {
+  aspect-ratio: auto;
+  background: var(--vit);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(44,42,41,0.1);
+}
+.split__media--contain img { width: 100%; height: auto; object-fit: contain; }
 .split__media--placeholder {
   background: linear-gradient(150deg, var(--solgul), var(--purpur) 70%);
   display: grid;
