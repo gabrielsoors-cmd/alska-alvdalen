@@ -2,10 +2,11 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Älska Älvdalen — en ideell förening för Älvdalen</title>
-  <meta name="description" content="Älska Älvdalen är en ideell förening som vill göra Älvdalen mer levande och vara en motor för utvecklingen i byn, tillsammans med föreningar, företag och kommunen.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Älska Älvdalen — flytta, besök och trivs i Älvdalen</title>
+  <meta name="description" content="Älska Älvdalen vill göra Älvdalen mer levande, så att fler trivs, besöker och flyttar hit. Hitta naturen, evenemangen, boende och allt om att flytta till Älvdalen.">
   <link rel="canonical" href="https://alskaalvdalen.com/">
+  <script>document.documentElement.classList.add('js')</script>
 
   <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="32x32">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/icon-192.png">
@@ -15,16 +16,18 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Älska Älvdalen">
-  <meta property="og:title" content="Älska Älvdalen — en ideell förening för Älvdalen">
-  <meta property="og:description" content="Nu föds Älska Älvdalen som en ideell förening. Vi vill göra Älvdalen mer levande och vara en motor för utvecklingen i byn.">
+  <meta property="og:title" content="Älska Älvdalen — flytta, besök och trivs i Älvdalen">
+  <meta property="og:description" content="Vi vill göra Älvdalen mer levande — att fler ska trivas, besöka och flytta till Älvdalen.">
   <meta property="og:image" content="https://alskaalvdalen.com/assets/img/og-image.jpg">
   <meta property="og:url" content="https://alskaalvdalen.com/">
   <meta property="og:locale" content="sv_SE">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Älska Älvdalen — en ideell förening för Älvdalen">
-  <meta name="twitter:description" content="Nu föds Älska Älvdalen som en ideell förening. Vi vill göra Älvdalen mer levande och vara en motor för utvecklingen i byn.">
+  <meta name="twitter:title" content="Älska Älvdalen — flytta, besök och trivs i Älvdalen">
+  <meta name="twitter:description" content="Vi vill göra Älvdalen mer levande — att fler ska trivas, besöka och flytta till Älvdalen.">
   <meta name="twitter:image" content="https://alskaalvdalen.com/assets/img/og-image.jpg">
-
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Älska Älvdalen","url":"https://alskaalvdalen.com/","logo":"https://alskaalvdalen.com/assets/img/favicon/icon-512.png","sameAs":["https://facebook.com/alskaalvdalen"],"address":{"@type":"PostalAddress","streetAddress":"Dalgatan 100","postalCode":"796 30","addressLocality":"Älvdalen","addressCountry":"SE"}}
+  </script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -32,124 +35,169 @@
 
   <header class="site-header">
     <div class="wrap site-header__inner">
-      <a class="wordmark" href="index.html">
-        <img src="assets/img/logo/alska-alvdalen-purpur.svg" alt="Älska Älvdalen">
+      <a class="wordmark" href="index.html" aria-label="Älska Älvdalen, startsidan">
+        <img src="assets/img/logo/alska-alvdalen-purpur.svg" alt="Älska Älvdalen" width="120" height="48">
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Öppna meny">
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
       </button>
-      <nav class="nav" id="primary-nav" data-open="false">
-        <a href="index.html" aria-current="page">Hem</a>
-        <a href="om.html">Om Älska Älvdalen</a>
-        <a href="kontakt.html">Kontakt</a>
+      <nav class="nav" id="primary-nav" data-open="false" aria-label="Huvudmeny">
+        <a class="nav__link" href="se-och-gora.html">Se och göra</a>
+        <a class="nav__link" href="flytta-hit.html">Flytta hit</a>
+        <a class="nav__link" href="boende.html">Boende</a>
+        <a class="nav__link" href="om-alvdalen.html">Om Älvdalen</a>
+        <a class="nav__link" href="alska-alvdalen.html">Älska Älvdalen</a>
+        <div class="nav__cta"><a class="btn btn--primary" href="kontakt.html">Kontakt</a></div>
+        <p class="nav__meta">Vi vill göra Älvdalen mer levande</p>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero hero--minimal">
-      <div class="hero__photo">
-        <video
-          class="hero__video"
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="assets/img/red-style-aa.jpg"
-        >
-          <source src="assets/img/alska-alvdalen-video-landingpage.mp4" type="video/mp4">
-        </video>
+    <section class="hero">
+      <div class="hero__media">
+        <img src="assets/img/hero-sjo.jpg" alt="Höstfärgad skog speglar sig i en stilla sjö i Älvdalen." width="1400" height="740" fetchpriority="high">
       </div>
-      <div class="wrap hero__inner--minimal">
-        <div>
-          <img class="hero__logo hero__logo--big" src="assets/img/logo/alska-alvdalen-vit.svg" alt="Älska Älvdalen">
-          <div class="hero__buttons">
-            <a class="btn btn--ghost-light" href="om.html">Om föreningen</a>
-            <a class="btn btn--ghost-light" href="kontakt.html">Kontakta oss</a>
-          </div>
-        </div>
-      </div>
-      <a class="hero__scroll-cue" href="#statement" aria-label="Scrolla ner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      </a>
-    </section>
-
-    <section id="statement" class="section section--ljus">
-      <div class="wrap">
-        <p class="eyebrow" style="text-align:center; display:block;">Älska Älvdalen</p>
-        <h1 class="statement statement--center reveal">Nu föds Älska Älvdalen som en ideell förening.</h1>
-      </div>
-    </section>
-
-    <svg class="river-divider" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 40 C 200 0, 300 80, 500 40 S 800 0, 1000 40 S 1150 70, 1200 40" stroke="#951637" opacity="0.2"/>
-    </svg>
-
-    <section class="section section--tint">
-      <div class="wrap">
-        <div class="section-head section-head--center">
-          <p class="eyebrow">Vår vision</p>
-        </div>
-        <div class="vision-grid">
-          <div class="vision-item reveal">
-            <span class="vision-item__mark" aria-hidden="true">”</span>
-            <p>Vi vill göra Älvdalen mer levande — att fler ska trivas, besöka och flytta till Älvdalen.</p>
-          </div>
-          <div class="vision-item reveal">
-            <span class="vision-item__mark" aria-hidden="true">”</span>
-            <p>Vi vill vara en motor för utvecklingen i byn, där vi tillsammans med andra föreningar, företag, ideella krafter och Älvdalens Kommun ska se till att Älvdalen är en attraktiv plats.</p>
-          </div>
+      <div class="wrap hero__inner">
+        <p class="eyebrow">Älska Älvdalen</p>
+        <h1>Vi vill göra Älvdalen mer levande</h1>
+        <p class="hero__lead">Att fler ska trivas, besöka och flytta till Älvdalen.</p>
+        <div class="btn-row">
+          <a class="btn btn--light" href="flytta-hit.html">Flytta hit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost-light" href="se-och-gora.html">Se och göra</a>
         </div>
       </div>
     </section>
 
-    <section class="section section--purpur">
+    <section class="section--tint" style="padding-bottom: clamp(3rem, 8vw, 6rem);">
       <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Det här gör vi</p>
-          <h2>Tre sätt vi bygger ett mer levande Älvdalen på</h2>
+        <div class="audience">
+          <a class="aud-card aud-card--purpur" href="flytta-hit.html">
+            <span class="aud-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></svg></span>
+            <h3>Flytta hit</h3>
+            <p>Funderar du på att byta ort? Här samlar vi det du behöver veta om att leva i Älvdalen.</p>
+            <span class="aud-card__go">Utforska <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="aud-card aud-card--skog" href="se-och-gora.html">
+            <span class="aud-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l6-11 4 6 2-3 6 8H3Z"/></svg></span>
+            <h3>Se och göra</h3>
+            <p>Kommer du på besök? Hitta natur, kultur och evenemang — året runt.</p>
+            <span class="aud-card__go">Utforska <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="aud-card" href="boende.html">
+            <span class="aud-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg></span>
+            <h3>Boende</h3>
+            <p>Så hittar du ett hem i Älvdalen och byarna runt omkring.</p>
+            <span class="aud-card__go">Utforska <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
         </div>
-        <div class="feature-grid">
-          <a class="feature-card reveal" href="om.html#iderad">
-            <span class="feature-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.44 1 .96 1.1 1.6h4.8c.1-.64.5-1.16 1.1-1.6A6 6 0 0 0 12 3Z"/></svg>
-            </span>
-            <h3>Idéråd</h3>
-            <p>Vi kommer att skapa ett idéråd, där vi ses en gång per år för att prata om vilka projekt och idéer vi vill driva kommande år.</p>
-            <span class="feature-card__link">Läs mer
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
-          <a class="feature-card reveal" href="om.html#magasin">
-            <span class="feature-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5c2.5-1 5.5-1 9 1 3.5-2 6.5-2 9-1v14c-2.5-1-5.5-1-9 1-3.5-2-6.5-2-9-1V5Z"/><path d="M12 6v14"/></svg>
-            </span>
-            <h3>Vinter &amp; sommarmagasin</h3>
-            <p>Till vintern lanserar vi vårt första magasin — en uppföljare till tidigare Happy Älvdalen.</p>
-            <span class="feature-card__link">Läs mer
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
-          <a class="feature-card reveal" href="om.html#creativet">
-            <span class="feature-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
-            </span>
-            <h3>Creativet</h3>
-            <p>Tack vare Älvdalens Besparingsskog kan vi nu öppna CO-work &amp; en kreativ hub i Blå huset på Dalgatan 100.</p>
-            <span class="feature-card__link">Läs mer
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
+
+        <div class="stack" style="margin-top: clamp(3rem, 8vw, 5rem);">
+          <div>
+            <div class="section-head">
+              <p class="eyebrow">Det här är Älvdalen</p>
+              <h2>Natur, kultur och ett eget språk</h2>
+            </div>
+            <div class="scroller">
+          <article class="fact reveal">
+            <span class="fact__tag">Språk</span>
+            <h3>Älvdalska</h3>
+            <p>Älvdalens egen dialekt, älvdalska, har rötter i fornnordiskan.</p>
+          </article>
+          <article class="fact reveal">
+            <span class="fact__tag">Hantverk</span>
+            <h3>Älvdalsporfyr</h3>
+            <p>Bergarten porfyr har format hantverkstraditionen i bygden.</p>
+          </article>
+          <article class="fact reveal">
+            <span class="fact__tag">Musik</span>
+            <h3>Hagströmsgitarrer</h3>
+            <p>På Porfyr- och Hagströmsmuseet kan du se Hagströms gitarrer.</p>
+          </article>
+          <article class="fact reveal">
+            <span class="fact__tag">Utsikt</span>
+            <h3>Hykjeberget</h3>
+            <p>Utsiktsplats i Älvdalen, känd för sin utsikt.</p>
+          </article>
+          <article class="fact reveal">
+            <span class="fact__tag">Landmärke</span>
+            <h3>Trängsletdammen</h3>
+            <p>Sveriges högsta damm ligger i Älvdalen.</p>
+          </article>
+          <article class="fact reveal">
+            <span class="fact__tag">Fjäll</span>
+            <h3>Idre &amp; Fulufjället</h3>
+            <p>Idre, Särna-Fulufjället och Grövelsjön ligger i Älvdalens kommun.</p>
+          </article>
+            </div>
+            <a class="btn btn--outline" href="om-alvdalen.html">Mer om Älvdalen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section section--ljus">
-      <div class="wrap" style="max-width: 36rem; text-align:center;">
-        <p class="eyebrow">Kontakt</p>
-        <a class="btn btn--primary" href="kontakt.html">Kontakta oss</a>
+      <div class="wrap split">
+        <div class="split__media reveal">
+          <img src="assets/img/foto-alv.jpg" alt="Älven slingrar sig genom skogen i Älvdalen." loading="lazy" width="800" height="1000">
+        </div>
+        <div class="reveal">
+          <p class="eyebrow">Flytta hit</p>
+          <h2>Bo där naturen är nära</h2>
+          <p>Vi vill att fler ska trivas, besöka och flytta till Älvdalen. På Flytta hit samlar vi det som är bra att veta: varför Älvdalen, hur du hittar boende, byarna runt omkring och vilka som kan hjälpa dig vidare.</p>
+          <a class="btn btn--primary" href="flytta-hit.html">Läs mer om att flytta hit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap">
+        <div class="event-cta reveal" id="kalender">
+          <span class="event-cta__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+          <div>
+            <h2>Vad händer i Älvdalen?</h2>
+            <p>Musik, kultur och andra evenemang för både besökare och Älvdalsbor samlas i Visit Dalarnas kalender för Älvdalen.</p>
+          </div>
+          <a class="btn btn--primary" href="https://www.visitdalarna.se/alvdalen/evenemang" target="_blank" rel="noopener">Se kommande evenemang <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--purpur">
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="eyebrow">Co-work &amp; kreativ hub</p>
+          <h2>Creativet i Blå huset</h2>
+          <p>Tack vare Älvdalens Besparingsskog kan vi nu öppna CO-work &amp; en kreativ hub. Det blir i Blå huset på Dalgatan 100.</p>
+          <p>Du är välkommen att plugga, jobba, ha möten, event eller workshops här — helt gratis!</p>
+          <a class="btn btn--light" href="alska-alvdalen.html#creativet">Läs om Creativet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="split__media split__media--contain reveal">
+          <img src="assets/img/om-creativet-collage.jpg" alt="Creativet — kreativ hub och co-work i Blå huset, Älvdalen." loading="lazy" width="1440" height="985">
+        </div>
+      </div>
+    </section>
+
+    <section class="section--tight section--ljus" style="padding-block: clamp(3rem, 7vw, 5rem);">
+      <div class="wrap">
+        <div class="section-head" style="margin-bottom:0;">
+          <p class="eyebrow">Föreningen bakom sidan</p>
+          <h2>Älska Älvdalen — en ideell förening</h2>
+          <p>Vi vill vara en motor för utvecklingen i byn, där vi tillsammans med andra föreningar, företag, ideella krafter och Älvdalens Kommun ska se till att Älvdalen är en attraktiv plats.</p>
+          <p style="margin-top:1.25rem;"><a class="btn btn--outline" href="alska-alvdalen.html">Om föreningen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap">
+        <div class="section-head section-head--center" style="margin-bottom:0;">
+          <h2>Har du frågor eller idéer?</h2>
+          <p>Hör av dig — vi svarar gärna.</p>
+          <p style="margin-top:1.5rem;"><a class="btn btn--primary" href="kontakt.html">Kontakta oss</a></p>
+        </div>
       </div>
     </section>
   </main>
@@ -157,14 +205,24 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
-        <a class="wordmark" href="index.html">
-          <img src="assets/img/logo/alska-alvdalen-vit.svg" alt="Älska Älvdalen">
-        </a>
-        <nav class="footer-nav" aria-label="Sidfot">
-          <a href="index.html">Hem</a>
-          <a href="om.html">Om Älska Älvdalen</a>
+        <div>
+          <a class="wordmark" href="index.html" aria-label="Älska Älvdalen, startsidan">
+            <img src="assets/img/logo/alska-alvdalen-vit.svg" alt="Älska Älvdalen" width="120" height="48">
+          </a>
+          <p class="footer-tag">Vi vill göra Älvdalen mer levande — att fler ska trivas, besöka och flytta till Älvdalen.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Utforska">
+          <span class="footer-nav__label">Utforska</span>
+          <a href="se-och-gora.html">Se och göra</a>
+          <a href="flytta-hit.html">Flytta hit</a>
+          <a href="boende.html">Boende</a>
+          <a href="om-alvdalen.html">Om Älvdalen</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Föreningen">
+          <span class="footer-nav__label">Föreningen</span>
+          <a href="alska-alvdalen.html">Älska Älvdalen</a>
           <a href="kontakt.html">Kontakt</a>
-          <a href="https://facebook.com/alskaalvdalen">Facebook</a>
+          <a href="https://facebook.com/alskaalvdalen" target="_blank" rel="noopener">Facebook</a>
         </nav>
       </div>
       <div class="footer-bottom">

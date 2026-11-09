@@ -2,10 +2,11 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kontakt — Älska Älvdalen</title>
-  <meta name="description" content="Kontakta Älska Älvdalen via mejl eller Facebook, eller besök oss på Dalgatan 100 i Älvdalen — där du även hittar Creativet, vår co-work- och kreativa hub.">
+  <meta name="description" content="Kontakta Älska Älvdalen via mejl eller Facebook, eller besök oss på Dalgatan 100 i Älvdalen. Hör av dig om medlemskap, artikelförslag eller frågor.">
   <link rel="canonical" href="https://alskaalvdalen.com/kontakt.html">
+  <script>document.documentElement.classList.add('js')</script>
 
   <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="32x32">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/icon-192.png">
@@ -16,13 +17,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Älska Älvdalen">
   <meta property="og:title" content="Kontakt — Älska Älvdalen">
-  <meta property="og:description" content="Kontakta Älska Älvdalen via mejl eller Facebook, eller besök oss på Dalgatan 100 i Älvdalen.">
+  <meta property="og:description" content="Kontakta Älska Älvdalen via mejl eller Facebook, eller besök oss på Dalgatan 100 i Älvdalen. Hör av dig om medlemskap, artikelförslag eller frågor.">
   <meta property="og:image" content="https://alskaalvdalen.com/assets/img/og-image.jpg">
   <meta property="og:url" content="https://alskaalvdalen.com/kontakt.html">
   <meta property="og:locale" content="sv_SE">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kontakt — Älska Älvdalen">
-  <meta name="twitter:description" content="Kontakta Älska Älvdalen via mejl eller Facebook, eller besök oss på Dalgatan 100 i Älvdalen.">
+  <meta name="twitter:description" content="Kontakta Älska Älvdalen via mejl eller Facebook, eller besök oss på Dalgatan 100 i Älvdalen. Hör av dig om medlemskap, artikelförslag eller frågor.">
   <meta name="twitter:image" content="https://alskaalvdalen.com/assets/img/og-image.jpg">
 
   <link rel="stylesheet" href="assets/css/style.css">
@@ -32,18 +33,22 @@
 
   <header class="site-header">
     <div class="wrap site-header__inner">
-      <a class="wordmark" href="index.html">
-        <img src="assets/img/logo/alska-alvdalen-purpur.svg" alt="Älska Älvdalen">
+      <a class="wordmark" href="index.html" aria-label="Älska Älvdalen, startsidan">
+        <img src="assets/img/logo/alska-alvdalen-purpur.svg" alt="Älska Älvdalen" width="120" height="48">
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Öppna meny">
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
       </button>
-      <nav class="nav" id="primary-nav" data-open="false">
-        <a href="index.html">Hem</a>
-        <a href="om.html">Om Älska Älvdalen</a>
-        <a href="kontakt.html" aria-current="page">Kontakt</a>
+      <nav class="nav" id="primary-nav" data-open="false" aria-label="Huvudmeny">
+        <a class="nav__link" href="se-och-gora.html">Se och göra</a>
+        <a class="nav__link" href="flytta-hit.html">Flytta hit</a>
+        <a class="nav__link" href="boende.html">Boende</a>
+        <a class="nav__link" href="om-alvdalen.html">Om Älvdalen</a>
+        <a class="nav__link" href="alska-alvdalen.html">Älska Älvdalen</a>
+        <div class="nav__cta"><a class="btn btn--primary" href="kontakt.html" aria-current="page">Kontakt</a></div>
+        <p class="nav__meta">Vi vill göra Älvdalen mer levande</p>
       </nav>
     </div>
   </header>
@@ -52,7 +57,7 @@
     <section class="section section--tight section--ljus">
       <div class="wrap">
         <p class="eyebrow">Kontakt</p>
-        <h1 style="font-size: var(--step-3); color: var(--purpur-dark);">Kontakt</h1>
+        <h1 style="font-size: var(--step-3); color: var(--purpur-dark);">Hör av dig</h1>
       </div>
     </section>
 
@@ -66,16 +71,17 @@
             </div>
             <div>
               <dt>Facebook</dt>
-              <dd><a href="https://facebook.com/alskaalvdalen">facebook.com/alskaalvdalen</a></dd>
+              <dd><a href="https://facebook.com/alskaalvdalen" target="_blank" rel="noopener">facebook.com/alskaalvdalen</a></dd>
             </div>
             <div>
               <dt>Adress</dt>
               <dd>
                 Dalgatan 100<br>796 30 Älvdalen
-                <span class="contact-list__note">Här ligger också Creativet, vår co-work- och kreativa hub — <a href="om.html#creativet">läs mer</a>.</span>
+                <span class="contact-list__note">Här ligger också Creativet, vår co-work- och kreativa hub — <a href="alska-alvdalen.html#creativet">läs mer</a>.</span>
               </dd>
             </div>
           </dl>
+          <p class="contact-member">Vill du bli medlem i föreningen eller veta mer? Hör av dig här, så berättar vi mer — <a href="kontakt.html?amne=medlemskap">skriv till oss om medlemskap</a>.</p>
         </div>
 
         <div class="reveal">
@@ -86,12 +92,22 @@
           -->
           <form id="contact-form">
             <div class="form-field">
+              <label for="topic">Vad gäller det?</label>
+              <select id="topic" name="topic">
+                <option data-key="fraga" value="Fråga eller meddelande">Fråga eller meddelande</option>
+                <option data-key="medlemskap" value="Medlemskap i föreningen">Medlemskap i föreningen</option>
+                <option data-key="berattelse" value="Min inflyttarberättelse">Jag har flyttat hit och vill berätta</option>
+                <option data-key="artikel" value="Artikelförslag till magasinet">Artikelförslag till magasinet</option>
+                <option data-key="annons" value="Annonsera i magasinet">Annonsera i magasinet</option>
+              </select>
+            </div>
+            <div class="form-field">
               <label for="name">Namn</label>
-              <input type="text" id="name" name="name" required>
+              <input type="text" id="name" name="name" autocomplete="name" required>
             </div>
             <div class="form-field">
               <label for="email">E-post</label>
-              <input type="email" id="email" name="email" required>
+              <input type="email" id="email" name="email" autocomplete="email" required>
             </div>
             <div class="form-field">
               <label for="message">Meddelande</label>
@@ -108,14 +124,24 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
-        <a class="wordmark" href="index.html">
-          <img src="assets/img/logo/alska-alvdalen-vit.svg" alt="Älska Älvdalen">
-        </a>
-        <nav class="footer-nav" aria-label="Sidfot">
-          <a href="index.html">Hem</a>
-          <a href="om.html">Om Älska Älvdalen</a>
+        <div>
+          <a class="wordmark" href="index.html" aria-label="Älska Älvdalen, startsidan">
+            <img src="assets/img/logo/alska-alvdalen-vit.svg" alt="Älska Älvdalen" width="120" height="48">
+          </a>
+          <p class="footer-tag">Vi vill göra Älvdalen mer levande — att fler ska trivas, besöka och flytta till Älvdalen.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Utforska">
+          <span class="footer-nav__label">Utforska</span>
+          <a href="se-och-gora.html">Se och göra</a>
+          <a href="flytta-hit.html">Flytta hit</a>
+          <a href="boende.html">Boende</a>
+          <a href="om-alvdalen.html">Om Älvdalen</a>
+        </nav>
+        <nav class="footer-nav" aria-label="Föreningen">
+          <span class="footer-nav__label">Föreningen</span>
+          <a href="alska-alvdalen.html">Älska Älvdalen</a>
           <a href="kontakt.html">Kontakt</a>
-          <a href="https://facebook.com/alskaalvdalen">Facebook</a>
+          <a href="https://facebook.com/alskaalvdalen" target="_blank" rel="noopener">Facebook</a>
         </nav>
       </div>
       <div class="footer-bottom">
