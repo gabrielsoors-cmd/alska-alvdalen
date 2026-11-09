@@ -627,7 +627,7 @@ p:last-child { margin-bottom: 0; }
   .split--reverse .split__media { order: 2; }
 }
 .split__media {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
@@ -838,3 +838,107 @@ p:last-child { margin-bottom: 0; }
   z-index: 100;
 }
 .skip-link:focus { left: 0; top: 0; }
+
+/* ==========================================================================
+   Fototiles, chips, galleri och fotoband (vinterbilder)
+   ========================================================================== */
+
+/* Fototile: bild med text nederst. Svepbar på mobil (via .scroller), rutnät på desktop. */
+.tile {
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 74%;
+  max-width: 18rem;
+  aspect-ratio: 4 / 5;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: flex-end;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: var(--vit);
+  text-decoration: none;
+  background: var(--purpur-dark);
+  box-shadow: var(--shadow-md);
+  -webkit-tap-highlight-color: transparent;
+}
+.tile img {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.tile::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(0deg, rgba(36,7,16,0.82) 0%, rgba(36,7,16,0.35) 42%, rgba(36,7,16,0) 70%);
+}
+.tile:hover img { transform: scale(1.05); }
+.tile__body { padding: 1.25rem 1.2rem 1.15rem; }
+.tile h3 { color: var(--vit); font-size: 1.3rem; margin-bottom: 0.25rem; }
+.tile p { font-size: 0.98rem; line-height: 1.4; color: rgba(255,255,255,0.9); margin: 0; }
+@media (min-width: 48rem) {
+  .tile { flex: none; max-width: none; }
+}
+
+/* Chips */
+.chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0 0 1.75rem; padding: 0; list-style: none; }
+.chip {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  background: var(--vit);
+  color: var(--purpur-dark);
+  border: 1px solid rgba(149, 22, 55, 0.22);
+}
+.section--tint .chip { background: var(--vit); }
+.section--ljus .chip { background: var(--ljusgra); border-color: transparent; }
+
+/* Fotoband: helbild med lättare slöja och stort citat */
+.section--photobg.section--photobg--clear::before {
+  background: linear-gradient(0deg, rgba(36,7,16,0.86) 0%, rgba(80,12,32,0.62) 55%, rgba(80,12,32,0.5) 100%);
+}
+.section--photobg--clear { background-position: center 40%; padding-block: clamp(4rem, 12vw, 9rem); }
+.section--photobg--clear .wrap { max-width: var(--content-width); }
+.photoband__quote {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--step-3);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--vit);
+  max-width: 20ch;
+  margin: 0;
+  text-shadow: 0 2px 24px rgba(36,7,16,0.4);
+}
+.section--photobg--clear .btn { margin-top: 1.75rem; }
+
+/* Galleri */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+.gallery figure { margin: 0; overflow: hidden; border-radius: var(--radius-md); background: var(--ljusgra); }
+.gallery img { width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 0.7s var(--ease); }
+.gallery figure:hover img { transform: scale(1.04); }
+.gallery .wide { grid-column: span 2; }
+.gallery .wide img { aspect-ratio: 16 / 10; }
+@media (min-width: 48rem) {
+  .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.85rem; }
+  .gallery .wide img { aspect-ratio: 8 / 5; }
+}
+
+/* Manifest-rader */
+.manifest { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+.manifest li {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--step-2);
+  line-height: 1.12;
+  color: var(--purpur-dark);
+  max-width: 24ch;
+  text-wrap: balance;
+}
+.manifest li + li { padding-top: 1.25rem; border-top: 1px solid rgba(149, 22, 55, 0.14); }
+@media (min-width: 62rem) {
+  .manifest { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+  .manifest li + li { padding-top: 0; border-top: none; }
+}
